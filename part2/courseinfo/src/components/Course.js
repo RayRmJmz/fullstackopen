@@ -10,17 +10,27 @@ const Part = (props) => {
   )
 }
 
+const Total = (props) => {
+  let sum = 0;
+  props.parts.forEach((part) => sum += part.exercises)
+
+  return (
+    <>
+      <b>total of  {sum} exercises</b>
+    </>
+  )
+}
+
 const Course = ({ course }) => {
   return (
     <div>
       <Header tittle={course.name} />
-        {course.parts.map(part => 
-          <Part part={part} />
-        )}
+      {course.parts.map(part => 
+        <Part part={part} />
+      )}
+      <Total parts={course.parts} />
     </div>
   )
 }
-
-
 
 export default Course
